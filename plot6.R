@@ -11,6 +11,7 @@ if (!exists("SCC"))  SCC <- readRDS("Source_Classification_Code.rds")
 
 
 #Plot6
+subset_vehicle <- SCC
 data_vehicle_comp <- merge(subset(NEI, fips=="24510" | fips=="06037" ), subset_vehicle, by="SCC")
 data_vehicle_comp$fips <- factor(data_vehicle_comp$fips, levels=c("24510","06037"), labels=c("Baltimore","LA"))
 total_emission_vehicle_comp <- aggregate(Emissions ~ year + fips, data=data_vehicle_comp, sum)
